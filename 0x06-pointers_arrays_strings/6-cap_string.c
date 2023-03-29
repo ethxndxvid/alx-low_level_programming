@@ -2,40 +2,42 @@
 
 /**
  * cap_string - capitalizes all words of a string
- * @str: pointer to a string
- * Return: pointer to a string
-*/
-char *cap_string(char *str)
+ * @s: string to be capitalized
+ *
+ * Return: pointer to capitalized string
+ */
+char *cap_string(char *s)
 {
 	int i, j;
-	char seperators[13] = {' ', '\t', '\n', ',', ';', '.',
-		'!', '?', '"', '(', ')', '{', '}'};
+	char separators[] = " \t\n,;.!?\"(){}";
 
-	for (i = 0; str[i] != '\0'; i++)
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		if (i == 0 || str[i - 1] == '\0')
+		if (i == 0 || s[i - 1] == ' ' ||
+		    s[i - 1] == '\t' || s[i - 1] == '\n' ||
+		    s[i - 1] == ',' || s[i - 1] == ';' ||
+		    s[i - 1] == '.' || s[i - 1] == '!' ||
+		    s[i - 1] == '?' || s[i - 1] == '\"' ||
+		    s[i - 1] == '(' || s[i - 1] == ')' ||
+		    s[i - 1] == '{' || s[i - 1] == '}')
 		{
-			if (str[i] >= 'a' && str[i] <= 'z')
+			if (s[i] >= 'a' && s[i] <= 'z')
 			{
-				str[i] -= 32;
+				s[i] -= 32;
 			}
-			else
+		}
+		else
+		{
+			for (j = 0; separators[j] != '\0'; j++)
 			{
-				for (j = 0; seperators[j] != '\0'; j++)
+				if (s[i - 1] == separators[j] && s[i] >= 'a' && s[i] <= 'z')
 				{
-					if (str[i - 1] == seperators[j])
-					{
-						if (str[i] >= 'a' && str[i] <= 'z')
-						{
-							str[i] -= 32;
-							break;
-						}
-					}
+					s[i] -= 32;
+					break;
 				}
 			}
 		}
-
 	}
-	return (str);
 
+	return (s);
 }
