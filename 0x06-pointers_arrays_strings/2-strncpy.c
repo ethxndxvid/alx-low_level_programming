@@ -11,13 +11,13 @@ char *_strncpy(char *dest, const char *src, int n)
 {
 	int i;
 
-	for (i = 0; i < n && src[i] != '\0'; i++) // looping through src until end of string or reaches n characters
+	for (i = 0; i < n && src[i] != '\0'; i++)
 	{
-		dest[i] = src[i]; //copies current character from src to corresponding position in dest
+		dest[i] = src[i];
 	}
-	for (; i < n; i++) // loops through dest starting from the last char in src and stopping when it hits n
+	for (; i < n; i++)
 	{
-		dest[i] = '\0'; //checking if remaining characters in dest need to be set to null char
+		dest[i] = '\0';
 	}
 	return (dest);
 }
