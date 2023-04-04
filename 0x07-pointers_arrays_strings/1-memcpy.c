@@ -5,12 +5,13 @@
  * @dest: destination memory area
  * @src: sourceAdd message memory area
  * @n: number of bytes to be copied
+ * Return: pointer to a dest
 */
 char *_memcpy(char *dest, char *src, unsigned int n)
 {
 	char *ret = dest;
 
-	while (n-- )
+	while (n--)
 	{
 		*dest++ = *src++;
 	}
